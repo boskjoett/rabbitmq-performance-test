@@ -1,0 +1,184 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=zyuser
+      - RABBITMQ_DEFAULT_PASS=zypassword
+
+  rabbitmq-perftest-subscriber1:
+    image: rabbitmq-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=1
+
+  rabbitmq-perftest-subscriber2:
+    image: rabbitmq-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=2
+
+  rabbitmq-perftest-subscriber3:
+    image: rabbitmq-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=3
+
+  rabbitmq-perftest-subscriber4:
+    image: rabbitmq-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=4
+
+  rabbitmq-perftest-subscriber5:
+    image: rabbitmq-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=5
+
+  rabbitmq-perftest-subscriber6:
+    image: rabbitmq-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=6
+
+  rabbitmq-perftest-subscriber7:
+    image: rabbitmq-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=7
+
+  rabbitmq-perftest-subscriber8:
+    image: rabbitmq-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=8
+
+  rabbitmq-perftest-subscriber9:
+    image: rabbitmq-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=9
+
+  rabbitmq-perftest-subscriber10:
+    image: rabbitmq-perftest-subscriber
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=10
+
+
+#######################################################################
+
+  rabbitmq-perftest-publisher1:
+    image: rabbitmq-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=1
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rabbitmq-perftest-subscriber1
+
+  rabbitmq-perftest-publisher2:
+    image: rabbitmq-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=2
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rabbitmq-perftest-subscriber2
+
+  rabbitmq-perftest-publisher3:
+    image: rabbitmq-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=3
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rabbitmq-perftest-subscriber3
+
+  rabbitmq-perftest-publisher4:
+    image: rabbitmq-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=4
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rabbitmq-perftest-subscriber4
+
+  rabbitmq-perftest-publisher5:
+    image: rabbitmq-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=5
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rabbitmq-perftest-subscriber5
+
+  rabbitmq-perftest-publisher6:
+    image: rabbitmq-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=6
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rabbitmq-perftest-subscriber6
+
+  rabbitmq-perftest-publisher7:
+    image: rabbitmq-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=7
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rabbitmq-perftest-subscriber7
+
+  rabbitmq-perftest-publisher8:
+    image: rabbitmq-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=8
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rabbitmq-perftest-subscriber8
+
+  rabbitmq-perftest-publisher9:
+    image: rabbitmq-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=9
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rabbitmq-perftest-subscriber9
+
+  rabbitmq-perftest-publisher10:
+    image: rabbitmq-perftest-publisher
+    environment:
+      - ConnectionStrings__RabbitMq=${RABBITMQ_CONNECTIONSTRING}
+      - Instance=10
+      - MessagesToSend=${MESSAGES_TO_SEND}
+      - MinPublishIntervalInMs=${MIN_PUBLISH_INTERVAL_MS}
+      - MaxPublishIntervalInMs=${MAX_PUBLISH_INTERVAL_MS}
+    depends_on:
+      - rabbitmq-perftest-subscriber10
